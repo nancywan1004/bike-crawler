@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for bike_scrawler project
+# Scrapy settings for bike_crawler project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'bike_scrawler'
+BOT_NAME = 'bike_crawler'
 
-SPIDER_MODULES = ['bike_scrawler.spiders']
-NEWSPIDER_MODULE = 'bike_scrawler.spiders'
+SPIDER_MODULES = ['bike_crawler.spiders']
+NEWSPIDER_MODULE = 'bike_crawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'bike_scrawler (+http://www.yourdomain.com)'
+#USER_AGENT = 'bike_crawler (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'bike_scrawler.middlewares.BikeScrawlerSpiderMiddleware': 543,
+#    'bike_crawler.middlewares.BikeCrawlerSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'bike_scrawler.middlewares.BikeScrawlerDownloaderMiddleware': 543,
+#    'bike_crawler.middlewares.BikeCrawlerDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'bike_scrawler.pipelines.BikeScrawlerPipeline': 300,
+#    'bike_crawler.pipelines.BikeCrawlerPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -88,5 +88,4 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-FEED_FORMAT="json"
-FEED_URI="bikecrawler.json"
+ITEM_PIPELINES = {'bike_crawler.pipelines.BikeCrawlerPipeline': 300 }
