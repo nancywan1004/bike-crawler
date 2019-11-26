@@ -5,7 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 from scrapy import signals
-from scrapy.exporters import CsvItemExporter
+from scrapy.exporters import JsonItemExporter
 
 class BikeCrawlerPipeline(object):
     @classmethod
@@ -16,13 +16,13 @@ class BikeCrawlerPipeline(object):
         return pipeline
 
     def spider_opened(self, spider):
-        self.file = open('bikecrawler.csv', 'wb')
-        self.exporter = CsvItemExporter(self.file)
+        file = open('bikecrawler.json', 'wb')
+        self.exporter = JsonItemExporter(file)
         self.exporter.start_exporting()
 
     def spider_closed(self, spider):
         self.exporter.finish_exporting()
-        self.file.close()
+        file.close()
 
     def process_item(self, item, spider):
         self.exporter.export_item(item)
